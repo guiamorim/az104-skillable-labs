@@ -1,4 +1,4 @@
-Lab 02a - Manage Subscriptions and RBAC
+Lab 02 - Manage Subscriptions and RBAC
 =======================================
 
 Lab introduction
@@ -7,9 +7,6 @@ Lab introduction
 In this lab, you learn about role-based access control. You learn how to use permissions and scopes to control what actions identities can and cannot perform. You also learn how to make subscription management easier using management groups.
 
 This lab requires an Azure subscription. Your subscription type may affect the availability of features in this lab. You may change the region, but the steps are written using **East US**.
-
-Estimated timing: 30 minutes
-----------------------------
 
 Lab scenario
 ------------
@@ -25,14 +22,10 @@ To simplify management of Azure resources in your organization, you have been ta
     *   Create support request tickets (do not include adding Azure providers)
         
 
-Interactive lab simulations
----------------------------
-
-> **Note**: The lab simulations that were previously provided have been retired.
-
 Architecture diagram
 --------------------
 
+![Architecture diagram](./images/lab02_Architecture_diagram.png)
 Job skills
 ----------
 
