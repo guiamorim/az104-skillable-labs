@@ -1,4 +1,4 @@
-Lab 03 - Manage Azure resources by using Azure Resource Manager Templates
+Lab 04 - Manage Azure resources by using Azure Resource Manager Templates
 =========================================================================
 
 Lab introduction
@@ -115,65 +115,53 @@ In this task, you work with the Azure Cloud Shell and Azure PowerShell. Azure Cl
 
 Task 4: Deploy a template with the CLI
 --------------------------------------
-    Continue in the Cloud Shell select Bash. Confirm your choice.
+1. Continue in the **Cloud Shell**, select **Bash**. **Confirm** your choice.
+2. Verify your files are available in the Cloud Shell storage. If you completed the previous task, your template files should be available.
 
-    Verify your files are available in the Cloud Shell storage. If you completed the previous task your template files should be available.
+    `shTypeCopy`
+    `ls`
 
-    shTypeCopy
-    ls
+3. Select the **Editor** (curly brackets) icon and navigate to the template JSON file.
+4. Make a change. For example, change the disk name to **az104-disk4**. Use **Ctrl + S** to save your changes.
 
-    Select the Editor (curly brackets) icon and navigate to the template JSON file.
+> Note: You can target your template deployment to a resource group, subscription, management group, or tenant. Depending on the scope of the deployment, you use different commands.
 
-    Make a change. For example, change the disk name to az104-disk4. Use Ctrl +S to save your changes.
+5. To deploy to a resource group, use **az deployment group create**.
 
-        You can target your template deployment to a resource group, subscription, management group, or tenant. Depending on the scope of the deployment, you use different commands.
+    `shTypeCopy
+    `az deployment group create --resource-group az104-rg3 --template-file template.json --parameters parameters.json
 
-    To deploy to a resource group, use az deployment group create.
+6. Ensure the command completes and the ProvisioningState is Succeeded.
+7. Confirm the disk was created.
 
-    shTypeCopy
-    az deployment group create --resource-group az104-rg3 --template-file template.json --parameters parameters.json
-
-    Ensure the command completes and the ProvisioningState is Succeeded.
-
-    Confirm the disk was created.
-
-    shTypeCopy
-     az disk list --output table
+    `shTypeCopy`
+    `az disk list --output table`
 
 Task 5: Deploy a resource by using Azure Bicep
+----------------------------------------------
 
-In this task, you will use a Bicep file to deploy a managed disk. Bicep is a declarative automation tool that is built on ARM templates.
+1. In this task, you will use a Bicep file to deploy a managed disk. Bicep is a declarative automation tool that is built on ARM templates.
+2. Locate the **F:\Allfiles\Labs\03\azuredeploydisk.bicep** file.
+3. Continue working in the **Cloud Shell** in a **Bash** session.
+4. Select **Manage files** and then **Upload** the Bicep file to the Cloud Shell.
+5. Click **Editor** and when prompted, **confirm** the switch to the Classic Cloud Shell.
+6. Select the **azuredeploydisk.bicep** file
+7. Take a minute to read through the Bicep template file. Notice how the disk resource is defined.
+8. Make the following changes:
+   - Change the **managedDiskName** value, line 2, to **az104-disk5**.
+   - Change the **sku name** value, line 26, to **StandardSSD_LRS**.
+   - Change the **diskSizeinGiB** value; line 7, to **32**.
 
-    Locate the F:\Allfiles\Labs\03\azuredeploydisk.bicep file.
+9. Use **Ctrl + S** to save your changes.
+10. Now, deploy the template.
 
-    Continue working in the Cloud Shell in a Bash session.
+    `TypeCopy`
+    `az deployment group create --resource-group az104-rg3 --template-file azuredeploydisk.bicep`
 
-    Select Manage files and then Upload the Bicep file to the Cloud Shell.
+11. Confirm the disk was created.
 
-    Click Editor and when prompted Confirm the switch to the Classic Cloud Shell.
-
-    Select the azuredeploydisk.bicep file
-
-    Take a minute to read through the Bicep template file. Notice how the disk resource is defined.
-
-    Make the following changes:
-        Change the managedDiskName value, line 2, to az104-disk5.
-        Change the sku name value, line 26, to StandardSSD_LRS.
-        Change the diskSizeinGiB value; line 7, to 32.
-
-    Use Ctrl + S to save your changes.
-
-    Now, deploy the template.
-
-    TypeCopy
-    az deployment group create --resource-group az104-rg3 --template-file azuredeploydisk.bicep
-
-    Confirm the disk was created.
-
-    shTypeCopy
-    az disk list --output table
-
-        Note: You have successfully deployed five managed disks, each in a different way. Nice job!
+    `shTypeCopy`
+    `az disk list --output table`
 
 Key takeaways
 -------------
@@ -189,20 +177,20 @@ Here are the main takeaways for this lab.
 Cleanup your resources
 ----------------------
 
-Ensure resources are freed up and cost is minimized. The easiest way to delete the lab resources is to delete the lab resource group.
+Ensure resources are freed up and the cost is minimized. The easiest way to delete the lab resources is to delete the lab resource group.
 
-    In the Azure portal, select the resource group, select Delete the resource group, Enter resource group name, and then click Delete.
+    In the Azure portal, select the resource group, select Delete the resource group, enter the resource group name, and then click Delete.
     Using Azure PowerShell, Remove-AzResourceGroup -Name resourceGroupName.
     Using the CLI, az group delete --name resourceGroupName.
 
-Extend your learning with Copilot
+Extend your learning with Copilot.
 ---------------------------------
 
     - What is the format of the Azure Resource Manager template file? Explain each component with examples.
     - How do I use an existing Azure Resource Manager template?
     - Compare and contrast Azure Resource Manager templates and Azure Bicep templates.
 
-Learn more with self-paced training
+Learn more with self-paced training.
 -----------------------------------
 
     - Deploy Azure infrastructure by using JSON ARM templates. Write JSON Azure Resource Manager templates (ARM templates) by using Visual Studio Code to deploy your infrastructure to Azure consistently and reliably.
